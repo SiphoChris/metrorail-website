@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SchedulesRouteImport } from './routes/schedules'
+import { Route as JourneyPlannerRouteImport } from './routes/journey-planner'
+import { Route as FaresRouteImport } from './routes/fares'
+import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SchedulesRoute = SchedulesRouteImport.update({
+  id: '/schedules',
+  path: '/schedules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JourneyPlannerRoute = JourneyPlannerRouteImport.update({
+  id: '/journey-planner',
+  path: '/journey-planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaresRoute = FaresRouteImport.update({
+  id: '/fares',
+  path: '/fares',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,78 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/fares': typeof FaresRoute
+  '/journey-planner': typeof JourneyPlannerRoute
+  '/schedules': typeof SchedulesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/fares': typeof FaresRoute
+  '/journey-planner': typeof JourneyPlannerRoute
+  '/schedules': typeof SchedulesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/fares': typeof FaresRoute
+  '/journey-planner': typeof JourneyPlannerRoute
+  '/schedules': typeof SchedulesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/alerts' | '/fares' | '/journey-planner' | '/schedules'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/alerts' | '/fares' | '/journey-planner' | '/schedules'
+  id:
+    | '__root__'
+    | '/'
+    | '/alerts'
+    | '/fares'
+    | '/journey-planner'
+    | '/schedules'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlertsRoute: typeof AlertsRoute
+  FaresRoute: typeof FaresRoute
+  JourneyPlannerRoute: typeof JourneyPlannerRoute
+  SchedulesRoute: typeof SchedulesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/schedules': {
+      id: '/schedules'
+      path: '/schedules'
+      fullPath: '/schedules'
+      preLoaderRoute: typeof SchedulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journey-planner': {
+      id: '/journey-planner'
+      path: '/journey-planner'
+      fullPath: '/journey-planner'
+      preLoaderRoute: typeof JourneyPlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fares': {
+      id: '/fares'
+      path: '/fares'
+      fullPath: '/fares'
+      preLoaderRoute: typeof FaresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +127,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlertsRoute: AlertsRoute,
+  FaresRoute: FaresRoute,
+  JourneyPlannerRoute: JourneyPlannerRoute,
+  SchedulesRoute: SchedulesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
