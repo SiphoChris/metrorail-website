@@ -1,7 +1,19 @@
+import { Train } from 'lucide-react'
+
 function HeroSection() {
   return (
     <section className="relative py-20 px-6 text-center overflow-hidden">
       <div className="absolute inset-0 bg-linear-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10"></div>
+
+      {/* Background train icons */}
+      <Train
+        className="absolute -left-16 -bottom-10 text-white/5 rotate-0"
+        style={{ width: 420, height: 420 }}
+      />
+      <Train
+        className="hidden md:block absolute -right-20 -top-10 text-white/5 rotate-180"
+        style={{ width: 380, height: 380 }}
+      />
       <div className="relative max-w-5xl mx-auto">
         <div className="flex items-center justify-center gap-6 mb-6">
           <img
@@ -12,7 +24,7 @@ function HeroSection() {
           <h1 className="text-3xl md:text-7xl font-black text-white [tracking:-0.08em]">
             <span className="text-gray-300">METRORAIL</span>{' '}
             <span className="bg-linear-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              TRAINS
+                WESTERN CAPE
             </span>
           </h1>
         </div>

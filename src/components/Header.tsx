@@ -27,7 +27,7 @@ export default function Header() {
             <img
               src="/metrorail-logo.png"
               alt="Metrorail Logo"
-              className="h-12"
+              className="h-12 md:h-14"
             />
           </Link>
         </h1>

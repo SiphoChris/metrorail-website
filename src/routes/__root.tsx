@@ -15,6 +15,7 @@ import ConvexProvider from '../integrations/convex/provider'
 import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
+import Footer from '@/components/Footer'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -68,6 +69,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             ]}
           />
         </ConvexProvider>
+        <Footer />
         <Scripts />
       </body>
     </html>

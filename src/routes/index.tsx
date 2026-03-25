@@ -52,7 +52,7 @@ function App() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-linear-to-b from-slate-900 via-slate-800 to-slate-900">
       <HeroSection />
 
       <section className="py-16 px-6 max-w-7xl mx-auto">
