@@ -15,6 +15,8 @@ import ConvexProvider from '../integrations/convex/provider'
 import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
+import { Navigation } from '@/components/Navigation'
+import Footer from '@/components/Footer'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -30,9 +32,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         name: 'viewport',
         content: 'width=device-width, initial-scale=1',
       },
-      {
-        title: 'TanStack Start Starter',
-      },
+      { title: 'Metrorail Western Cape' },
     ],
     links: [
       {
@@ -54,11 +54,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <ConvexProvider>
           <Header />
-          {children}
+          <div className="min-h-screen bg-linear-to-b from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col">
+            <Navigation />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
           <TanStackDevtools
-            config={{
-              position: 'bottom-right',
-            }}
+            config={{ position: 'bottom-right' }}
             plugins={[
               {
                 name: 'Tanstack Router',
