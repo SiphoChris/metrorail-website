@@ -53,7 +53,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ConvexProvider>
-          <Header />
+          <Header className="index-2" />
           <div className="min-h-screen bg-linear-to-b from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col">
             <Navigation />
             <main className="flex-1">{children}</main>
