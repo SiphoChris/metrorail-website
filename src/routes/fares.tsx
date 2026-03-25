@@ -8,7 +8,8 @@ import { motion } from 'framer-motion'
 import { CreditCard, Wallet, Ticket, Info } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-export function FaresPage() {
+
+function FaresPage() {
   const fareZones = [
     {
       zone: 'Zone 1',

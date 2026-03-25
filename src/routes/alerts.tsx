@@ -14,7 +14,7 @@ export const Route = createFileRoute('/alerts')({
 
 
 
-export function AlertsPage() {
+function AlertsPage() {
   const [filter, setFilter] = useState('all')
   const allAlerts: AlertType[] = [
     {

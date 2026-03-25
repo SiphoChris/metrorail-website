@@ -13,7 +13,7 @@ export const Route = createFileRoute('/schedules')({
 })
 
 
-export function SchedulesPage() {
+function SchedulesPage() {
   const [searchQuery, setSearchQuery] = useState('')
   // Mock schedule data
   const schedules = [
