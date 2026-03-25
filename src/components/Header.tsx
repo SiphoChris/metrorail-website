@@ -12,7 +12,7 @@ export default function Header({className}: {className?: string}) {
 
   return (
     <>
-      <header className={cn(`py-2 px-2 md:px-8 flex gap-4 items-center justify-between bg-gray-800 text-white shadow-lg `, className)}>
+      <header className={cn(`py-2 px-2 md:px-8 flex gap-4 items-center justify-between bg-gray-800 text-white shadow-lg`, className)}>
         <h1 className="text-xl font-semibold">
           <Link to="/">
             <img
@@ -31,11 +31,14 @@ export default function Header({className}: {className?: string}) {
         </button>
       </header>
 
-      <aside
+      {/* <aside
         className={`fixed top-0 right-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
-      >
+      > */}
+      <aside className={`fixed top-0 right-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-200 transform transition-transform duration-300 ease-in-out flex flex-col ${
+  isOpen ? 'translate-x-0' : 'translate-x-full'
+}`}>
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
           <h2 className="text-xl font-bold">Menu</h2>
           <button
