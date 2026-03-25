@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="py-2 md:py-4 px-2 md:px-8 flex gap-4 items-center justify-between bg-gray-800 text-white shadow-lg">
+      <header className="py-2 px-2 md:px-8 flex gap-4 items-center justify-between bg-gray-800 text-white shadow-lg">
         <h1 className="text-xl font-semibold">
           <Link to="/">
             <img
