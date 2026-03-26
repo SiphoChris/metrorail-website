@@ -148,7 +148,7 @@ function HomePage() {
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-white">
-                    Live Departures
+                    Outbound Departures
                   </h2>
                   <p className="text-sm text-slate-400">Cape Town Station</p>
                 </div>
@@ -250,7 +250,7 @@ function HomePage() {
             </div>
           </section>
 
-          {/* Why ride with us */}
+          {/* Why ride with us
           <section className="rounded-2xl p-6 border border-white/10 bg-white/3">
             <h3 className="font-semibold text-white mb-4">Why ride with us?</h3>
             <div className="space-y-4">
@@ -282,7 +282,26 @@ function HomePage() {
                 </div>
               ))}
             </div>
+          </section> */}
+
+          {/* Safety Tips */}
+          <section className="rounded-2xl p-6 border border-white/10 bg-white/3">
+            <h3 className="font-semibold text-white mb-4">Safety Tips</h3>
+            <div className="space-y-4">
+              {[
+                'Keep your belongings secure and be aware of your surroundings.',
+                'Make sure the doors close behind you when boarding.',
+                'Be aware of the platform gap and wait for the train to come to a complete stop before boarding.',
+                'Report any suspicious activity to station staff or security personnel.',
+              ].map((tip, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-amber-400 mt-1" />
+                  <p className="text-sm text-slate-400">{tip}</p>
+                </div>
+              ))}
+            </div>
           </section>
+
         </div>
       </div>
     </motion.div>

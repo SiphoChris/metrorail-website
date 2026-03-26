@@ -40,7 +40,7 @@ export default function Header({className}: {className?: string}) {
   isOpen ? 'translate-x-0' : 'translate-x-full'
 }`}>
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          <h2 className="text-xl font-bold">Menu</h2>
+          <h2 className="text-xl font-bold">Regions</h2>
           <button
             onClick={() => setIsOpen(false)}
             className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
@@ -61,7 +61,7 @@ export default function Header({className}: {className?: string}) {
             }}
           >
             <Home size={20} />
-            <span className="font-medium">Home</span>
+            <span className="font-medium">(coming soon...)</span>
           </Link>
         </nav>
       </aside>
