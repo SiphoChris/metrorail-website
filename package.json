@@ -6,10 +6,12 @@
     "dev:web": "vite dev --port 3000",
     "dev:server": "pnpm dlx convex dev",
     "build": "vite build",
+    "build:clean": "rm -rf dist && vite build",
     "preview": "vite preview",
     "unit:test": "vitest run",
     "e2e:test": "vitest run --config vitest.e2e.config.ts",
-    "deploy": "pnpm run build && wrangler deploy",
+    "deploy": "pnpm run build:clean && wrangler deploy",
+    "deploy:fresh": "rm -rf dist .wrangler && pnpm run build && wrangler deploy",
     "lint": "eslint",
     "format": "prettier",
     "check": "prettier --write . && eslint --fix"
