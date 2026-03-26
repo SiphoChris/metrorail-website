@@ -81,8 +81,8 @@ function AlertsPage() {
             Live updates on disruptions, maintenance, and service changes.
           </p>
         </div>
-        <Button variant="outline" className="gap-2 shrink-0">
-          <BellRing className="w-4 h-4" /> Subscribe to Alerts
+        <Button variant="outline" className="gap-2 shrink-0 text-black">
+          <BellRing className="w-4 h-4" />Subscribe to Alerts
         </Button>
       </div>
 

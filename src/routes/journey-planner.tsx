@@ -182,7 +182,7 @@ function JourneyPlannerPage() {
               ))}
             </motion.div>
           ) : (
-            <div className="h-full min-h-[400px] flex flex-col items-center justify-center text-center p-8 border-2 border-dashed border-slate-800 rounded-xl bg-slate-900/20">
+            <div className="h-full min-h-100 flex flex-col items-center justify-center text-center p-8 border-2 border-dashed border-slate-800 rounded-xl bg-slate-900/20">
               <MapPin className="w-12 h-12 text-slate-700 mb-4" />
               <h3 className="text-lg font-medium text-slate-300 mb-2">
                 Where to?

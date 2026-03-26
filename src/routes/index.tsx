@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Train, Clock, AlertTriangle, MapPin, ChevronRight, Wifi, CreditCard, Shield } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Badge } from '@/components/ui/badge'
 import { TrainDepartureCard, TrainType } from '../components/TrainDepartureCard'
 import { AlertBanner, AlertType } from '../components/AlertBanner'
 import { motion } from 'framer-motion'
@@ -121,9 +121,9 @@ function HomePage() {
                   <p className="text-sm text-slate-400">Cape Town Station</p>
                 </div>
               </div>
-              <Badge className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs">
+              {/* <Badge className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs">
                 Live
-              </Badge>
+              </Badge> */}
               <Link
                 to="/schedules"
                 className="text-sm font-medium text-cyan-400 hover:text-cyan-300 flex items-center gap-1"
