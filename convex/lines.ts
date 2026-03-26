@@ -11,9 +11,8 @@ export const getAll = query({
 export const getActive = query({
   args: {},
   handler: async (ctx) => {
-    return ctx.db.query('lines').collect().then(lines =>
-      lines.filter(l => l.isActive)
-    )
+    const lines = await ctx.db.query('lines').collect()
+    return lines.filter((l) => l.isActive)
   },
 })
 

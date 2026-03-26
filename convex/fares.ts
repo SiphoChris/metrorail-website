@@ -14,12 +14,12 @@ export const getByZone = query({
   handler: async (ctx, { zone }) => {
     return ctx.db
       .query('fareZones')
-      .withIndex('by_zone', q => q.eq('zone', zone))
+      .withIndex('by_zone', (q) => q.eq('zone', zone))
       .first()
   },
 })
 
-// Given two station zone numbers, return the applicable fare
+// Given two station IDs, return the applicable fare zone
 export const getFareForStations = query({
   args: {
     fromStationId: v.id('stations'),
@@ -34,7 +34,7 @@ export const getFareForStations = query({
     const zone = Math.max(from.zone, to.zone)
     return ctx.db
       .query('fareZones')
-      .withIndex('by_zone', q => q.eq('zone', zone))
+      .withIndex('by_zone', (q) => q.eq('zone', zone))
       .first()
   },
 })
@@ -45,7 +45,7 @@ export const create = mutation({
     label: v.string(),
     distanceRange: v.string(),
     examples: v.string(),
-    singleFare: v.number(),
+    singleFare: v.number(),  // stored in cents e.g. 650 = R 6.50
     returnFare: v.number(),
     monthlyFare: v.number(),
   },

@@ -1,7 +1,5 @@
 // import { createFileRoute, Link } from '@tanstack/react-router'
 // import { Train, Clock, AlertTriangle, MapPin, ChevronRight, Wifi, CreditCard, Shield } from 'lucide-react'
-// import { Card, CardContent } from '@/components/ui/card'
-// // import { Badge } from '@/components/ui/badge'
 // import { TrainDepartureCard, TrainType } from '../components/TrainDepartureCard'
 // import { AlertBanner, AlertType } from '../components/AlertBanner'
 // import { motion } from 'framer-motion'
@@ -50,15 +48,15 @@
 //       exit={{ opacity: 0 }}
 //       className="flex flex-col min-h-screen"
 //     >
-//       {/* Hero Section */}
-//       <section className="relative py-24 px-6 text-center overflow-hidden border-b border-slate-800">
-//         <div className="absolute inset-0 bg-linear-to-b from-cyan-900/20 to-slate-900 pointer-events-none" />
+//       {/* Hero */}
+//       <section className="relative py-24 px-6 text-center overflow-hidden border-b border-white/[0.06]">
+//         <div className="absolute inset-0 bg-linear-to-b from-blue-900/20 to-transparent pointer-events-none" />
 //         <Train
-//           className="absolute -left-16 -bottom-10 text-white/5 rotate-12"
+//           className="absolute -left-16 -bottom-10 text-white/[0.04] rotate-12"
 //           style={{ width: 420, height: 420 }}
 //         />
 //         <Train
-//           className="hidden md:block absolute -right-20 -top-10 text-white/5 -rotate-12"
+//           className="hidden md:block absolute -right-20 -top-10 text-white/[0.04] -rotate-12"
 //           style={{ width: 380, height: 380 }}
 //         />
 
@@ -70,7 +68,7 @@
 //             className="text-4xl md:text-7xl font-black text-white tracking-tight mb-6"
 //           >
 //             Your journey starts{' '}
-//             <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
+//             <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-blue-600">
 //               here.
 //             </span>
 //           </motion.h1>
@@ -92,13 +90,13 @@
 //           >
 //             <Link
 //               to="/journey-planner"
-//               className="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-cyan-500/25"
+//               className="px-6 py-3 bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-blue-500/20"
 //             >
 //               Plan a Journey
 //             </Link>
 //             <Link
 //               to="/schedules"
-//               className="px-6 py-3 border border-slate-600 hover:border-slate-400 text-slate-300 hover:text-white font-semibold rounded-lg transition-colors"
+//               className="px-6 py-3 border border-white/10 hover:border-white/25 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white font-semibold rounded-lg transition-colors"
 //             >
 //               View Schedules
 //             </Link>
@@ -107,38 +105,37 @@
 //       </section>
 
 //       <div className="max-w-6xl mx-auto w-full px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
-//         {/* Left Column: Departures & Alerts */}
+
+//         {/* Left: Departures & Alerts */}
 //         <div className="lg:col-span-2 space-y-10">
-//           {/* Next Departures */}
+
+//           {/* Live Departures */}
 //           <section>
 //             <div className="flex items-center justify-between mb-6">
 //               <div className="flex items-center gap-3">
-//                 <div className="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
-//                   <Clock className="w-5 h-5 text-cyan-400" />
+//                 <div className="p-2 bg-blue-500/10 rounded-lg border border-blue-500/20">
+//                   <Clock className="w-5 h-5 text-blue-400" />
 //                 </div>
 //                 <div>
 //                   <h2 className="text-xl font-bold text-white">Live Departures</h2>
 //                   <p className="text-sm text-slate-400">Cape Town Station</p>
 //                 </div>
 //               </div>
-//               {/* <Badge className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs">
-//                 Live
-//               </Badge> */}
 //               <Link
 //                 to="/schedules"
-//                 className="text-sm font-medium text-cyan-400 hover:text-cyan-300 flex items-center gap-1"
+//                 className="text-sm font-medium text-blue-400 hover:text-blue-300 flex items-center gap-1 transition-colors"
 //               >
 //                 Full schedule <ChevronRight className="w-4 h-4" />
 //               </Link>
 //             </div>
 
-//             <Card className="overflow-hidden">
+//             <div className="rounded-xl border border-white/10 overflow-hidden">
 //               <div className="flex flex-col">
 //                 {nextTrains.map((train, i) => (
 //                   <TrainDepartureCard key={i} train={train} index={i} />
 //                 ))}
 //               </div>
-//             </Card>
+//             </div>
 //           </section>
 
 //           {/* Service Alerts */}
@@ -152,7 +149,7 @@
 //               </div>
 //               <Link
 //                 to="/alerts"
-//                 className="text-sm font-medium text-cyan-400 hover:text-cyan-300 flex items-center gap-1"
+//                 className="text-sm font-medium text-blue-400 hover:text-blue-300 flex items-center gap-1 transition-colors"
 //               >
 //                 View all <ChevronRight className="w-4 h-4" />
 //               </Link>
@@ -166,8 +163,10 @@
 //           </section>
 //         </div>
 
-//         {/* Right Column: Popular Routes & Features */}
+//         {/* Right: Popular Routes & Features */}
 //         <div className="space-y-10">
+
+//           {/* Popular Routes */}
 //           <section>
 //             <div className="flex items-center gap-3 mb-6">
 //               <div className="p-2 bg-purple-500/10 rounded-lg border border-purple-500/20">
@@ -185,38 +184,37 @@
 //                   transition={{ delay: i * 0.1 }}
 //                 >
 //                   <Link to="/journey-planner" className="w-full block">
-//                     <Card className="hover:border-cyan-500/40 transition-colors cursor-pointer group bg-slate-800/40">
-//                       <CardContent className="flex items-center gap-4 p-4">
-//                         <Train className="w-8 h-8 text-slate-600 group-hover:text-cyan-400 transition-colors shrink-0" />
-//                         <div className="flex-1 min-w-0 text-left">
-//                           <div className="flex items-center gap-2 text-sm font-semibold text-white">
-//                             <span>{route.from}</span>
-//                             <ChevronRight className="w-3 h-3 text-slate-500" />
-//                             <span>{route.to}</span>
-//                           </div>
-//                           <p className="text-xs text-slate-400 mt-0.5">
-//                             {route.duration} &bull; from {route.price}
-//                           </p>
+//                     <div className="group rounded-xl border border-white/10 bg-white/[0.03] hover:border-blue-400/40 hover:bg-blue-500/[0.05] transition-colors cursor-pointer p-4 flex items-center gap-4">
+//                       <Train className="w-8 h-8 text-white/15 group-hover:text-blue-400 transition-colors shrink-0" />
+//                       <div className="flex-1 min-w-0 text-left">
+//                         <div className="flex items-center gap-2 text-sm font-semibold text-white">
+//                           <span>{route.from}</span>
+//                           <ChevronRight className="w-3 h-3 text-slate-500" />
+//                           <span>{route.to}</span>
 //                         </div>
-//                         <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-cyan-400 transition-colors shrink-0" />
-//                       </CardContent>
-//                     </Card>
+//                         <p className="text-xs text-slate-400 mt-0.5">
+//                           {route.duration} &bull; from {route.price}
+//                         </p>
+//                       </div>
+//                       <ChevronRight className="w-4 h-4 text-white/15 group-hover:text-blue-400 transition-colors shrink-0" />
+//                     </div>
 //                   </Link>
 //                 </motion.div>
 //               ))}
 //             </div>
 //           </section>
 
-//           <section className="bg-slate-800/30 rounded-2xl p-6 border border-slate-800">
+//           {/* Why ride with us */}
+//           <section className="rounded-2xl p-6 border border-white/10 bg-white/[0.03]">
 //             <h3 className="font-semibold text-white mb-4">Why ride with us?</h3>
 //             <div className="space-y-4">
 //               {[
-//                 { icon: <CreditCard className="w-5 h-5 text-cyan-400" />, title: 'Tap-to-Ride', desc: 'RFID card payments at every gate.' },
-//                 { icon: <Wifi className="w-5 h-5 text-cyan-400" />, title: 'Live Updates', desc: 'Real-time arrivals and alerts.' },
-//                 { icon: <Shield className="w-5 h-5 text-cyan-400" />, title: 'Safe Travel', desc: 'Security personnel at stations.' },
+//                 { icon: <CreditCard className="w-5 h-5 text-blue-400" />, title: 'Tap-to-Ride', desc: 'RFID card payments at every gate.' },
+//                 { icon: <Wifi className="w-5 h-5 text-blue-400" />, title: 'Live Updates', desc: 'Real-time arrivals and alerts.' },
+//                 { icon: <Shield className="w-5 h-5 text-blue-400" />, title: 'Safe Travel', desc: 'Security personnel at stations.' },
 //               ].map((f, i) => (
 //                 <div key={i} className="flex gap-3">
-//                   <div className="mt-0.5">{f.icon}</div>
+//                   <div className="mt-0.5 shrink-0">{f.icon}</div>
 //                   <div>
 //                     <p className="text-sm font-medium text-slate-200">{f.title}</p>
 //                     <p className="text-xs text-slate-400">{f.desc}</p>
@@ -232,50 +230,79 @@
 // }
 
 
-
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Train, Clock, AlertTriangle, MapPin, ChevronRight, Wifi, CreditCard, Shield } from 'lucide-react'
-import { TrainDepartureCard, TrainType } from '../components/TrainDepartureCard'
-import { AlertBanner, AlertType } from '../components/AlertBanner'
+import {
+  Train,
+  Clock,
+  AlertTriangle,
+  MapPin,
+  ChevronRight,
+  Wifi,
+  CreditCard,
+  Shield,
+} from 'lucide-react'
+import { useQuery } from 'convex/react'
+import { api } from '../../convex/_generated/api'
+import { Id } from '../../convex/_generated/dataModel'
+import { TrainDepartureCard, UpcomingTrain } from '../components/TrainDepartureCard'
+import { AlertBanner } from '../components/AlertBanner'
 import { motion } from 'framer-motion'
 
 export const Route = createFileRoute('/')({ component: HomePage })
 
-const nextTrains: TrainType[] = [
-  { line: 'Southern Line', destination: "Simon's Town", platform: '4', minutes: 4, status: 'on-time' },
-  { line: 'Cape Flats Line', destination: 'Chris Hani', platform: '2', minutes: 11, status: 'delayed' },
-  { line: 'Northern Line', destination: 'Bellville', platform: '6', minutes: 18, status: 'on-time' },
-  { line: 'Southern Line', destination: 'Retreat', platform: '4', minutes: 22, status: 'on-time' },
-  { line: 'Central Line', destination: 'Khayelitsha', platform: '3', minutes: 27, status: 'cancelled' },
-]
+// Cape Town station slug — change if your slug differs
+const CAPE_TOWN_SLUG = 'cape-town'
 
-const serviceAlerts: AlertType[] = [
-  {
-    id: '1',
-    type: 'warning',
-    line: 'Cape Flats Line',
-    title: 'Signal Maintenance',
-    message: 'Delays of up to 15 minutes between Langa and Bellville due to signal maintenance.',
-    timestamp: 'Updated 10m ago',
-  },
-  {
-    id: '2',
-    type: 'error',
-    line: 'Central Line',
-    title: 'Service Suspended',
-    message: 'No service between Mutual and Khayelitsha. Rail replacement buses in operation.',
-    timestamp: 'Updated 1h ago',
-  },
-]
+function getDayType(): 'weekday' | 'weekend' {
+  const day = new Date().getDay()
+  return day === 0 || day === 6 ? 'weekend' : 'weekday'
+}
 
-const popularRoutes = [
-  { from: 'Cape Town', to: 'Wynberg', duration: '22 min', price: 'R 9.50' },
-  { from: 'Cape Town', to: "Simon's Town", duration: '68 min', price: 'R 18.00' },
-  { from: 'Cape Town', to: 'Bellville', duration: '35 min', price: 'R 12.50' },
-  { from: 'Cape Town', to: 'Khayelitsha', duration: '45 min', price: 'R 14.00' },
-]
+function getCurrentTime(): string {
+  const now = new Date()
+  return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+}
+
+function minutesUntil(departureTime: string): number {
+  const [h, m] = departureTime.split(':').map(Number)
+  const now = new Date()
+  const depMins = h * 60 + m
+  const nowMins = now.getHours() * 60 + now.getMinutes()
+  return Math.max(0, depMins - nowMins)
+}
 
 function HomePage() {
+  const allStations = useQuery(api.stations.getActive) ?? []
+  const capeTown = allStations.find((s) => s.slug === CAPE_TOWN_SLUG)
+
+  const upcomingRaw = useQuery(
+    api.schedules.getUpcoming,
+    capeTown
+      ? {
+          fromStationId: capeTown._id as Id<'stations'>,
+          afterTime: getCurrentTime(),
+          dayType: getDayType(),
+          limit: 5,
+        }
+      : 'skip',
+  ) ?? []
+
+  // Attach minutesUntil + mock status (will be real once you have a status field)
+  const nextTrains: UpcomingTrain[] = upcomingRaw.map((t) => ({
+    ...t,
+    minutesUntil: minutesUntil(t.departureTime),
+    status: 'on-time' as const,
+  }))
+
+  const serviceAlerts = useQuery(api.alerts.getActive) ?? []
+
+  const popularRoutes = [
+    { from: 'Cape Town', to: 'Wynberg', duration: '22 min', price: 'R 9.50' },
+    { from: 'Cape Town', to: "Simon's Town", duration: '68 min', price: 'R 18.00' },
+    { from: 'Cape Town', to: 'Bellville', duration: '35 min', price: 'R 12.50' },
+    { from: 'Cape Town', to: 'Khayelitsha', duration: '45 min', price: 'R 14.00' },
+  ]
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -285,7 +312,7 @@ function HomePage() {
     >
       {/* Hero */}
       <section className="relative py-24 px-6 text-center overflow-hidden border-b border-white/[0.06]">
-        <div className="absolute inset-0 bg-linear-to-b from-blue-900/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-transparent pointer-events-none" />
         <Train
           className="absolute -left-16 -bottom-10 text-white/[0.04] rotate-12"
           style={{ width: 420, height: 420 }}
@@ -303,7 +330,7 @@ function HomePage() {
             className="text-4xl md:text-7xl font-black text-white tracking-tight mb-6"
           >
             Your journey starts{' '}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-blue-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
               here.
             </span>
           </motion.h1>
@@ -314,7 +341,8 @@ function HomePage() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10"
           >
-            Fast, reliable commuter rail service connecting the heart of Cape Town to its vibrant suburbs.
+            Fast, reliable commuter rail service connecting the heart of Cape
+            Town to its vibrant suburbs.
           </motion.p>
 
           <motion.div
@@ -340,7 +368,6 @@ function HomePage() {
       </section>
 
       <div className="max-w-6xl mx-auto w-full px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
-
         {/* Left: Departures & Alerts */}
         <div className="lg:col-span-2 space-y-10">
 
@@ -352,7 +379,9 @@ function HomePage() {
                   <Clock className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-white">Live Departures</h2>
+                  <h2 className="text-xl font-bold text-white">
+                    Live Departures
+                  </h2>
                   <p className="text-sm text-slate-400">Cape Town Station</p>
                 </div>
               </div>
@@ -365,11 +394,20 @@ function HomePage() {
             </div>
 
             <div className="rounded-xl border border-white/10 overflow-hidden">
-              <div className="flex flex-col">
-                {nextTrains.map((train, i) => (
-                  <TrainDepartureCard key={i} train={train} index={i} />
-                ))}
-              </div>
+              {nextTrains.length === 0 ? (
+                Array.from({ length: 5 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-16 border-b border-white/[0.06] last:border-0 bg-white/[0.02] animate-pulse"
+                  />
+                ))
+              ) : (
+                <div className="flex flex-col">
+                  {nextTrains.map((train, i) => (
+                    <TrainDepartureCard key={train._id} train={train} index={i} />
+                  ))}
+                </div>
+              )}
             </div>
           </section>
 
@@ -391,16 +429,21 @@ function HomePage() {
             </div>
 
             <div className="space-y-3">
-              {serviceAlerts.map((alert, i) => (
-                <AlertBanner key={alert.id} alert={alert} index={i} />
-              ))}
+              {serviceAlerts.length === 0 ? (
+                <div className="text-center py-8 text-slate-500 text-sm">
+                  No active alerts.
+                </div>
+              ) : (
+                serviceAlerts.slice(0, 2).map((alert, i) => (
+                  <AlertBanner key={alert._id} alert={alert} index={i} />
+                ))
+              )}
             </div>
           </section>
         </div>
 
         {/* Right: Popular Routes & Features */}
         <div className="space-y-10">
-
           {/* Popular Routes */}
           <section>
             <div className="flex items-center gap-3 mb-6">
@@ -444,14 +487,28 @@ function HomePage() {
             <h3 className="font-semibold text-white mb-4">Why ride with us?</h3>
             <div className="space-y-4">
               {[
-                { icon: <CreditCard className="w-5 h-5 text-blue-400" />, title: 'Tap-to-Ride', desc: 'RFID card payments at every gate.' },
-                { icon: <Wifi className="w-5 h-5 text-blue-400" />, title: 'Live Updates', desc: 'Real-time arrivals and alerts.' },
-                { icon: <Shield className="w-5 h-5 text-blue-400" />, title: 'Safe Travel', desc: 'Security personnel at stations.' },
+                {
+                  icon: <CreditCard className="w-5 h-5 text-blue-400" />,
+                  title: 'Tap-to-Ride',
+                  desc: 'RFID card payments at every gate.',
+                },
+                {
+                  icon: <Wifi className="w-5 h-5 text-blue-400" />,
+                  title: 'Live Updates',
+                  desc: 'Real-time arrivals and alerts.',
+                },
+                {
+                  icon: <Shield className="w-5 h-5 text-blue-400" />,
+                  title: 'Safe Travel',
+                  desc: 'Security personnel at stations.',
+                },
               ].map((f, i) => (
                 <div key={i} className="flex gap-3">
                   <div className="mt-0.5 shrink-0">{f.icon}</div>
                   <div>
-                    <p className="text-sm font-medium text-slate-200">{f.title}</p>
+                    <p className="text-sm font-medium text-slate-200">
+                      {f.title}
+                    </p>
                     <p className="text-xs text-slate-400">{f.desc}</p>
                   </div>
                 </div>

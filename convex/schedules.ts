@@ -8,41 +8,56 @@ export const getAll = query({
   },
   handler: async (ctx, { dayType, lineId }) => {
     let schedules = await ctx.db.query('schedules').collect()
-    if (dayType) schedules = schedules.filter(s => s.dayType === dayType)
-    if (lineId) schedules = schedules.filter(s => s.lineId === lineId)
-    return schedules
-      .filter(s => s.isActive)
+
+    if (dayType) schedules = schedules.filter((s) => s.dayType === dayType)
+    if (lineId) schedules = schedules.filter((s) => s.lineId === lineId)
+
+    const active = schedules
+      .filter((s) => s.isActive)
       .sort((a, b) => a.departureTime.localeCompare(b.departureTime))
+
+    return Promise.all(
+      active.map(async (s) => ({
+        ...s,
+        line: await ctx.db.get(s.lineId),
+        fromStation: await ctx.db.get(s.fromStationId),
+        toStation: await ctx.db.get(s.toStationId),
+      })),
+    )
   },
 })
 
-// Used by live departures: next N trains from a station after a given HH:mm time
+// Live departures: next N trains from a station after a given HH:mm
 export const getUpcoming = query({
   args: {
     fromStationId: v.id('stations'),
-    afterTime: v.string(),   // "HH:mm"
+    afterTime: v.string(), // "HH:mm"
     dayType: v.union(v.literal('weekday'), v.literal('weekend')),
     limit: v.optional(v.number()),
   },
   handler: async (ctx, { fromStationId, afterTime, dayType, limit }) => {
     const schedules = await ctx.db
       .query('schedules')
-      .withIndex('by_from_station', q => q.eq('fromStationId', fromStationId))
+      .withIndex('by_from_station', (q) =>
+        q.eq('fromStationId', fromStationId),
+      )
       .collect()
 
     const upcoming = schedules
-      .filter(s => s.isActive && s.dayType === dayType && s.departureTime >= afterTime)
+      .filter(
+        (s) =>
+          s.isActive && s.dayType === dayType && s.departureTime >= afterTime,
+      )
       .sort((a, b) => a.departureTime.localeCompare(b.departureTime))
       .slice(0, limit ?? 10)
 
-    // Hydrate with line info
     return Promise.all(
       upcoming.map(async (s) => ({
         ...s,
         line: await ctx.db.get(s.lineId),
         fromStation: await ctx.db.get(s.fromStationId),
         toStation: await ctx.db.get(s.toStationId),
-      }))
+      })),
     )
   },
 })

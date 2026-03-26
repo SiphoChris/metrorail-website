@@ -12,9 +12,19 @@ export const getActive = query({
   args: {},
   handler: async (ctx) => {
     const stations = await ctx.db.query('stations').collect()
-    return stations.filter(s => s.isActive).sort((a, b) =>
-      a.name.localeCompare(b.name)
-    )
+    return stations
+      .filter((s) => s.isActive)
+      .sort((a, b) => a.name.localeCompare(b.name))
+  },
+})
+
+export const getByLine = query({
+  args: { lineId: v.id('lines') },
+  handler: async (ctx, { lineId }) => {
+    const stations = await ctx.db.query('stations').collect()
+    return stations
+      .filter((s) => s.isActive && s.lineIds.includes(lineId))
+      .sort((a, b) => a.name.localeCompare(b.name))
   },
 })
 

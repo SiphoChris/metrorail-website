@@ -6,20 +6,18 @@ export const getActive = query({
   handler: async (ctx) => {
     const alerts = await ctx.db
       .query('alerts')
-      .withIndex('by_active', q => q.eq('isActive', true))
+      .withIndex('by_active', (q) => q.eq('isActive', true))
       .collect()
+
+    const order = { error: 0, warning: 1, info: 2 }
 
     return Promise.all(
       alerts
-        .sort((a, b) => {
-          // error first, then warning, then info
-          const order = { error: 0, warning: 1, info: 2 }
-          return order[a.type] - order[b.type]
-        })
+        .sort((a, b) => order[a.type] - order[b.type])
         .map(async (alert) => ({
           ...alert,
           line: await ctx.db.get(alert.lineId),
-        }))
+        })),
     )
   },
 })
@@ -34,7 +32,7 @@ export const getAll = query({
         .map(async (alert) => ({
           ...alert,
           line: await ctx.db.get(alert.lineId),
-        }))
+        })),
     )
   },
 })
@@ -56,7 +54,9 @@ export const create = mutation({
 export const update = mutation({
   args: {
     id: v.id('alerts'),
-    type: v.optional(v.union(v.literal('error'), v.literal('warning'), v.literal('info'))),
+    type: v.optional(
+      v.union(v.literal('error'), v.literal('warning'), v.literal('info')),
+    ),
     lineId: v.optional(v.id('lines')),
     title: v.optional(v.string()),
     message: v.optional(v.string()),
