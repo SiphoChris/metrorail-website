@@ -1,24 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import {
-  MapPin,
-  ArrowRightLeft,
-  Clock,
-  Calendar,
-  Train,
-} from 'lucide-react'
+import { MapPin, Train } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import JourneyPlannerForm from '@/components/JourneyPlannerForm'
-
 
 export const Route = createFileRoute('/journey-planner')({
   component: JourneyPlannerPage,
 })
-
 
 function JourneyPlannerPage() {
   const [isSearching, setIsSearching] = useState(false)
@@ -88,7 +78,11 @@ function JourneyPlannerPage() {
 
           <Card className="bg-slate-800/80 border-slate-700">
             <CardContent className="p-6">
-              <JourneyPlannerForm stations={stations} handleSearch={handleSearch} isSearching={isSearching} />
+              <JourneyPlannerForm
+                stations={stations}
+                handleSearch={handleSearch}
+                isSearching={isSearching}
+              />
             </CardContent>
           </Card>
         </div>
