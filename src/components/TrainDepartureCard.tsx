@@ -1,5 +1,3 @@
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
 import { motion } from 'framer-motion'
 
 export interface TrainType {
@@ -18,50 +16,67 @@ export function TrainDepartureCard({
   index?: number
 }) {
   const statusConfig = {
-    'on-time': { variant: 'success' as const, label: 'On Time' },
-    delayed: { variant: 'warning' as const, label: 'Delayed' },
-    cancelled: { variant: 'destructive' as const, label: 'Cancelled' },
+    'on-time': {
+      label: 'On Time',
+      className: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
+    },
+    delayed: {
+      label: 'Delayed',
+      className: 'bg-amber-500/10 text-amber-400 border border-amber-500/20',
+    },
+    cancelled: {
+      label: 'Cancelled',
+      className: 'bg-red-500/10 text-red-400 border border-red-500/20',
+    },
   }
+
+  const status = statusConfig[train.status]
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.3 }}
-      className="flex items-center gap-4 px-4 py-4 border-b border-border last:border-0 hover:bg-muted/50 transition-colors group"
+      className="flex items-center gap-4 px-5 py-4 border-b border-white/[0.06] last:border-0 hover:bg-white/[0.04] transition-colors group"
     >
+      {/* Minutes */}
       <div className="shrink-0 w-14 text-center">
         {train.status === 'cancelled' ? (
-          <span className="text-xl font-black text-destructive">--</span>
+          <span className="text-xl font-black text-red-400">--</span>
         ) : (
           <>
-            <span className="text-2xl font-black text-foreground tabular-nums">
+            <span className="text-2xl font-black text-white tabular-nums">
               {train.minutes}
             </span>
-            <p className="text-xs text-muted-foreground font-medium">min</p>
+            <p className="text-xs text-slate-500 font-medium">min</p>
           </>
         )}
       </div>
 
-      <Separator orientation="vertical" className="h-10" />
+      {/* Divider */}
+      <div className="w-px h-10 bg-white/10 shrink-0" />
 
+      {/* Destination + Line */}
       <div className="flex-1 min-w-0">
-        <p className="font-semibold text-foreground truncate text-lg group-hover:text-primary transition-colors">
+        <p className="font-semibold text-white truncate text-lg group-hover:text-blue-400 transition-colors">
           {train.destination}
         </p>
-        <p className="text-xs text-muted-foreground">{train.line}</p>
+        <p className="text-xs text-slate-500">{train.line}</p>
       </div>
 
+      {/* Platform + Status */}
       <div className="flex items-center gap-4 shrink-0">
         <div className="text-right hidden sm:block">
-          <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+          <p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
             Platform
           </p>
-          <p className="font-bold text-primary text-lg">{train.platform}</p>
+          <p className="font-bold text-blue-400 text-lg tabular-nums">
+            {train.platform}
+          </p>
         </div>
-        <Badge variant={statusConfig[train.status].variant} className="w-20 justify-center">
-          {statusConfig[train.status].label}
-        </Badge>
+        <span className={`text-xs font-semibold px-3 py-1 rounded-full w-20 text-center ${status.className}`}>
+          {status.label}
+        </span>
       </div>
     </motion.div>
   )
