@@ -6,6 +6,11 @@
   "main": "@tanstack/react-start/server-entry",
   "assets": {
     "directory": "./dist/client",
-    "binding": "ASSETS"
-  }
+    "binding": "ASSETS",
+  },
+  "vars": {
+    "CONVEX_DEPLOYMENT": "dev:insightful-caiman-134",
+    "VITE_CONVEX_SITE_URL": "https://insightful-caiman-134.convex.site",
+    "VITE_CONVEX_URL": "https://insightful-caiman-134.convex.cloud",
+  },
 }
