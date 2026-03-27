@@ -18,6 +18,7 @@ export default function Header({className}: {className?: string}) {
             <img
               src="/metrorail-logo.png"
               alt="Metrorail Logo"
+              aria-label='logo'
               className="h-12 md:h-14"
             />
           </Link>
