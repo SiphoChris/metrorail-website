@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import {
-  Home,
+  MapPin,
   Menu,
   X,
 } from 'lucide-react'
@@ -9,6 +9,11 @@ import { cn } from '@/lib/utils'
 
 export default function Header({className}: {className?: string}) {
   const [isOpen, setIsOpen] = useState(false)
+
+  const navItems = [
+    { name: 'Gauteng', icon: <MapPin size={20} />, to: '/' },
+    { name: 'KwaZulu Natal', icon: <MapPin size={20} />, to: '/' },
+  ]
 
   return (
     <>
@@ -49,18 +54,20 @@ export default function Header({className}: {className?: string}) {
         </div>
 
         <nav className="flex-1 p-4 overflow-y-auto">
-          <Link
-            to="/"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <Home size={20} />
-            <span className="font-medium">(coming soon...)</span>
-          </Link>
+          <ul className="space-y-4">
+            {navItems.map((item) => (
+              <li key={item.name}>
+                <Link
+                  to={item.to}
+                  className="flex items-center gap-2 text-lg font-medium hover:bg-gray-800 rounded-lg p-2 transition-colors"
+                  onClick={() => setIsOpen(false)} // Close menu on link click
+                >
+                  {item.icon}
+                  {item.name} (coming soon)
+                </Link>
+              </li>
+          ))}
+          </ul>
         </nav>
       </aside>
     </>

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test.describe('home page loads', () => {
+test.describe('home page', () => {
   test('landing page loads', async ({ page }) => {
     await page.goto('/')
     await expect(page.getByLabel('logo')).toBeVisible()

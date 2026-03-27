@@ -1,0 +1,9 @@
+import {test, expect} from '@playwright/test';
+
+test.describe('schedules page', () => {
+    test('schedules page loads', async ({ page }) => {
+        await page.goto('/schedules')
+        await expect(page.getByText('Timetables & Schedules')).toBeVisible()
+    })
+
+})
