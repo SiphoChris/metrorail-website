@@ -1,15 +1,12 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import {
-  Train,
-  Clock,
-  AlertTriangle,
-  MapPin,
-  ChevronRight,
-} from 'lucide-react'
+import { Train, Clock, AlertTriangle, MapPin, ChevronRight } from 'lucide-react'
 import { useQuery } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import { Id } from '../../convex/_generated/dataModel'
-import { TrainDepartureCard, UpcomingTrain } from '../components/TrainDepartureCard'
+import {
+  TrainDepartureCard,
+  UpcomingTrain,
+} from '../components/TrainDepartureCard'
 import { AlertBanner } from '../components/AlertBanner'
 import { motion } from 'framer-motion'
 
@@ -40,17 +37,18 @@ function HomePage() {
   const allStations = useQuery(api.stations.getActive) ?? []
   const capeTown = allStations.find((s) => s.slug === CAPE_TOWN_SLUG)
 
-  const upcomingRaw = useQuery(
-    api.schedules.getUpcoming,
-    capeTown
-      ? {
-          fromStationId: capeTown._id as Id<'stations'>,
-          afterTime: getCurrentTime(),
-          dayType: getDayType(),
-          limit: 5,
-        }
-      : 'skip',
-  ) ?? []
+  const upcomingRaw =
+    useQuery(
+      api.schedules.getUpcoming,
+      capeTown
+        ? {
+            fromStationId: capeTown._id as Id<'stations'>,
+            afterTime: getCurrentTime(),
+            dayType: getDayType(),
+            limit: 5,
+          }
+        : 'skip',
+    ) ?? []
 
   // Attach minutesUntil + mock status (will be real once you have a status field)
   const nextTrains: UpcomingTrain[] = upcomingRaw.map((t) => ({
@@ -63,9 +61,24 @@ function HomePage() {
 
   const popularRoutes = [
     { from: 'Cape Town', to: 'Wynberg', duration: '22 min', price: 'R 9.50' },
-    { from: 'Cape Town', to: "Simon's Town", duration: '68 min', price: 'R 18.00' },
-    { from: 'Cape Town', to: 'Bellville', duration: '35 min', price: 'R 12.50' },
-    { from: 'Cape Town', to: 'Khayelitsha', duration: '45 min', price: 'R 14.00' },
+    {
+      from: 'Cape Town',
+      to: "Simon's Town",
+      duration: '68 min',
+      price: 'R 18.00',
+    },
+    {
+      from: 'Cape Town',
+      to: 'Bellville',
+      duration: '35 min',
+      price: 'R 12.50',
+    },
+    {
+      from: 'Cape Town',
+      to: 'Khayelitsha',
+      duration: '45 min',
+      price: 'R 14.00',
+    },
   ]
 
   return (
@@ -118,14 +131,14 @@ function HomePage() {
           >
             <Link
               to="/journey-planner"
-              role='link'
+              role="link"
               className="px-6 py-3 bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-blue-500/20"
             >
               Plan a Journey
             </Link>
             <Link
               to="/schedules"
-              role='link'
+              role="link"
               className="px-6 py-3 border border-white/10 hover:border-white/25 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white font-semibold rounded-lg transition-colors"
             >
               View Schedules
@@ -137,7 +150,6 @@ function HomePage() {
       <div className="max-w-6xl mx-auto w-full px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left: Departures & Alerts */}
         <div className="lg:col-span-2 space-y-10">
-
           {/* Outbound Departures */}
           <section>
             <div className="flex items-center justify-between mb-6">
@@ -161,7 +173,11 @@ function HomePage() {
             </div>
 
             {/* show departure trains if there are */}
-            <div className="rounded-xl border border-white/10 overflow-hidden">
+            <div
+              className="rounded-xl border border-white/10 overflow-hidden"
+              role="table"
+              aria-label="Outbound Departures"
+            >
               {nextTrains.length === 0 ? (
                 <div className="text-center py-8 text-slate-500 text-sm">
                   No upcoming departures.
@@ -169,7 +185,11 @@ function HomePage() {
               ) : (
                 <div className="flex flex-col">
                   {nextTrains.map((train, i) => (
-                    <TrainDepartureCard key={train._id} train={train} index={i} />
+                    <TrainDepartureCard
+                      key={train._id}
+                      train={train}
+                      index={i}
+                    />
                   ))}
                 </div>
               )}
@@ -199,9 +219,11 @@ function HomePage() {
                   No active alerts.
                 </div>
               ) : (
-                serviceAlerts.slice(0, 2).map((alert, i) => (
-                  <AlertBanner key={alert._id} alert={alert} index={i} />
-                ))
+                serviceAlerts
+                  .slice(0, 2)
+                  .map((alert, i) => (
+                    <AlertBanner key={alert._id} alert={alert} index={i} />
+                  ))
               )}
             </div>
           </section>
@@ -298,7 +320,6 @@ function HomePage() {
               ))}
             </div>
           </section>
-
         </div>
       </div>
     </motion.div>

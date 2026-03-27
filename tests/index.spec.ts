@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 
-test.describe('home page', () => {
-  test('landing page loads', async ({ page }) => {
+test.describe('home page loads', () => {
+  test('landing page content is visible', async ({ page }) => {
     await page.goto('/')
     await expect(page.getByLabel('logo')).toBeVisible()
   })
@@ -36,4 +36,15 @@ test('call-to-action buttons are visible', async ({ page }) => {
   await planJourneyLink.click()
   await expect(page).toHaveURL('/journey-planner')
 })
+})
+
+test.describe('departures data loads', () => {
+  test('departures table is visible', async ({ page }) => {
+    await page.goto('/')
+    await page.waitForLoadState('networkidle')
+
+    const departuresTable = page.getByRole('table', { name: 'Outbound Departures' })
+    console.log('Departures table locator:', await departuresTable.evaluate(el => el.outerHTML))
+    await expect(departuresTable).toBeVisible()
+  })
 })
