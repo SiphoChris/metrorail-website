@@ -5,9 +5,6 @@ import {
   AlertTriangle,
   MapPin,
   ChevronRight,
-  Wifi,
-  CreditCard,
-  Shield,
 } from 'lucide-react'
 import { useQuery } from 'convex/react'
 import { api } from '../../convex/_generated/api'
@@ -121,12 +118,14 @@ function HomePage() {
           >
             <Link
               to="/journey-planner"
+              role='link'
               className="px-6 py-3 bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-blue-500/20"
             >
               Plan a Journey
             </Link>
             <Link
               to="/schedules"
+              role='link'
               className="px-6 py-3 border border-white/10 hover:border-white/25 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white font-semibold rounded-lg transition-colors"
             >
               View Schedules

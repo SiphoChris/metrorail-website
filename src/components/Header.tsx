@@ -32,14 +32,11 @@ export default function Header({className}: {className?: string}) {
         </button>
       </header>
 
-      {/* <aside
-        className={`fixed top-0 right-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      > */}
-      <aside className={`fixed top-0 right-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-200 transform transition-transform duration-300 ease-in-out flex flex-col ${
-  isOpen ? 'translate-x-0' : 'translate-x-full'
-}`}>
+     <aside
+  className={`fixed top-0 right-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-200 transform transition-transform duration-300 ease-in-out flex flex-col ${
+    isOpen ? 'translate-x-0 visible' : 'translate-x-full invisible'
+  }`}
+>
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
           <h2 className="text-xl font-bold">Regions</h2>
           <button
