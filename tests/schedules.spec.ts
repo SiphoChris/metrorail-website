@@ -6,4 +6,9 @@ test.describe('schedules page loads', () => {
         await expect(page.getByText('Timetables & Schedules')).toBeVisible()
     })
 
+    test('schedules table is visible', async ({ page }) => {
+        await page.goto('/schedules')
+        await expect(page.getByRole('table', { name: 'Timetables & Schedules' })).toBeVisible()
+    })
+
 })

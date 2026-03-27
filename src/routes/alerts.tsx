@@ -82,7 +82,8 @@ function AlertsPage() {
         </Tabs>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4" role="table"
+              aria-label="Service Alerts">
         {alerts === undefined ? (
           // Loading skeleton
           Array.from({ length: 3 }).map((_, i) => (

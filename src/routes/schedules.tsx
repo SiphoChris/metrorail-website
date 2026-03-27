@@ -105,7 +105,8 @@ function SchedulesPage() {
                       )}
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody role="table"
+              aria-label="Timetables & Schedules">
                     {schedules === undefined ? (
                       Array.from({ length: 5 }).map((_, i) => (
                         <tr key={i}>

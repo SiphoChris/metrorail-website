@@ -38,13 +38,12 @@ test('call-to-action buttons are visible', async ({ page }) => {
 })
 })
 
-test.describe('departures data loads', () => {
+test.describe('departures data table loads', () => {
   test('departures table is visible', async ({ page }) => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
     const departuresTable = page.getByRole('table', { name: 'Outbound Departures' })
-    console.log('Departures table locator:', await departuresTable.evaluate(el => el.outerHTML))
     await expect(departuresTable).toBeVisible()
   })
 })
