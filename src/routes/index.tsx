@@ -139,7 +139,7 @@ function HomePage() {
         {/* Left: Departures & Alerts */}
         <div className="lg:col-span-2 space-y-10">
 
-          {/* Live Departures */}
+          {/* Outbound Departures */}
           <section>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
@@ -161,14 +161,12 @@ function HomePage() {
               </Link>
             </div>
 
+            {/* show departure trains if there are */}
             <div className="rounded-xl border border-white/10 overflow-hidden">
               {nextTrains.length === 0 ? (
-                Array.from({ length: 5 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="h-16 border-b border-white/6 last:border-0 bg-white/2 animate-pulse"
-                  />
-                ))
+                <div className="text-center py-8 text-slate-500 text-sm">
+                  No upcoming departures.
+                </div>
               ) : (
                 <div className="flex flex-col">
                   {nextTrains.map((train, i) => (

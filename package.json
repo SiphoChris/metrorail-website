@@ -14,7 +14,9 @@
     "deploy:fresh": "rm -rf dist .wrangler && pnpm run build && wrangler deploy",
     "lint": "eslint",
     "format": "prettier",
-    "check": "prettier --write . && eslint --fix"
+    "check": "prettier --write . && eslint --fix",
+    "upload:data": "pnpm dlx convex run seed/run:execute",
+    "clear:data": "pnpm dlx convex run seed/clear:run"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.13.8",

@@ -12,6 +12,10 @@ import type * as alerts from "../alerts.js";
 import type * as fares from "../fares.js";
 import type * as lines from "../lines.js";
 import type * as schedules from "../schedules.js";
+import type * as seed_clear from "../seed/clear.js";
+import type * as seed_data_central_line from "../seed/data/central_line.js";
+import type * as seed_data_fares from "../seed/data/fares.js";
+import type * as seed_run from "../seed/run.js";
 import type * as stations from "../stations.js";
 
 import type {
@@ -25,6 +29,10 @@ declare const fullApi: ApiFromModules<{
   fares: typeof fares;
   lines: typeof lines;
   schedules: typeof schedules;
+  "seed/clear": typeof seed_clear;
+  "seed/data/central_line": typeof seed_data_central_line;
+  "seed/data/fares": typeof seed_data_fares;
+  "seed/run": typeof seed_run;
   stations: typeof stations;
 }>;
 
